@@ -32,28 +32,34 @@
     <tbody>
         @if (User.Identity?.IsAuthenticated == true)
         {
-            @foreach (var item in Model.Contact)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Name)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.ContactPhone)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Email)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.IsDeleted)
-                    </td>
+            <p>
+                <a asp-page="Create">Create New</a>
+            </p>
+        }
+
+@foreach (var item in Model.Contact) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ContactPhone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsDeleted)
+            </td>
+                @if (User.Identity?.IsAuthenticated == true)
+                {
                     <td>
                         <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
                         <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
                         <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
                     </td>
-                </tr>
-            }
-        }
+                }
+        </tr>
+}
     </tbody>
 </table>
