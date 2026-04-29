@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace ContactManager.Pages
@@ -12,9 +12,10 @@ namespace ContactManager.Pages
             _logger = logger;
         }
 
-        public void OnGet()
+        public IActionResult OnGet()
         {
-
+            //Redirecionar para o Index com a lista de contatos
+            return RedirectToPage("/Contacts/Index");
         }
     }
 }
