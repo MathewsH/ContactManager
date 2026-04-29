@@ -54,8 +54,11 @@ namespace ContactManager.Pages.Contacts
 
             if (contact != null)
             {
-                Contact = contact;
-                _context.Contacts.Remove(contact);
+                contact.IsDeleted = true;
+
+                //Contact = contact;
+                //_context.Contacts.Remove(Contact);
+                _context.Contacts.Update(contact);
                 await _context.SaveChangesAsync();
             }
 
