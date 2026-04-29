@@ -26,33 +26,34 @@
             <th>
                 @Html.DisplayNameFor(model => model.Contact[0].Email)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Contact[0].IsDeleted)
-            </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Contact) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ContactPhone)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IsDeleted)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
+        @if (User.Identity?.IsAuthenticated == true)
+        {
+            @foreach (var item in Model.Contact)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ContactPhone)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IsDeleted)
+                    </td>
+                    <td>
+                        <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                        <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                        <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+        }
     </tbody>
 </table>
