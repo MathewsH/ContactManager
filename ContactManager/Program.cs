@@ -31,7 +31,8 @@ using (var scope = app.Services.CreateScope())
     {
         dbContext.Database.OpenConnection();
         // Run EnsureCreated() to create the database and any pending migrations
-        dbContext.Database.EnsureCreated();
+        //dbContext.Database.EnsureCreated();
+        dbContext.Database.Migrate();
     }
 }
 
